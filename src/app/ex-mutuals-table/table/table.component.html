@@ -1,0 +1,21 @@
+<table mat-table [dataSource]="mutuals" class="mat-elevation-z8">
+
+    <!--Screen Name Column-->
+    <ng-container matColumnDef="screenName">
+        <th mat-header-cell *matHeaderCellDef>Screen Name</th>
+        <td mat-cell *matCellDef="let mutualName">
+            {{mutualName}}
+        </td>
+    </ng-container>
+
+   <!--Unfollow Button Column--> 
+    <ng-container matColumnDef="unfollow">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let mutualName">
+            <app-unfollow-button [screenName]="mutualName"></app-unfollow-button>
+        </td>
+    </ng-container>
+
+    <mat-paginator [pageSizeOptions]= "[10, 20, 50]" 
+    showFirstLastButtons></mat-paginator>
+</table>

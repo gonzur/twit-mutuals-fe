@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ApiService } from '../service/api.service';
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
+import { LoginDataService } from '../services/login-data.service';
 
 @Component({
   selector: 'app-table',
@@ -9,17 +10,15 @@ import { ApiService } from '../service/api.service';
 export class TableComponent implements OnInit {
 
   mutuals: string[] = [];
-  @Input() screenName: string = "";
-  private apiService: ApiService; 
 
-  constructor(apiService: ApiService) {
+  constructor(private apiService: ApiService, private loginData: LoginDataService) {
     this.apiService = apiService;
   }
 
   ngOnInit(): void {
-    this.apiService.getMutuals(this.screenName)
+    this.apiService.getMutuals(this.loginData.getUserData().screenName)
       .subscribe((mutualList: string[]) => {
-        this.mutuals = mutualList
+        this.mutuals = mutualList;
       })
   }
 }

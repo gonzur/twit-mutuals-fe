@@ -1,21 +1,27 @@
-<table mat-table [dataSource]="mutuals" class="mat-elevation-z8">
+<div  class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" >
 
-    <!--Screen Name Column-->
-    <ng-container matColumnDef="screenName">
-        <th mat-header-cell *matHeaderCellDef>Screen Name</th>
-        <td mat-cell *matCellDef="let mutualName">
-            {{mutualName}}
-        </td>
-    </ng-container>
+        <!--Screen Name Column-->
+        <ng-container matColumnDef="mutualName">
+            <th mat-header-cell *matHeaderCellDef>Screen Name</th>
+            <td mat-cell *matCellDef="let element">
+                {{element.mutualName}}
+            </td>
+        </ng-container>
 
-   <!--Unfollow Button Column--> 
-    <ng-container matColumnDef="unfollow">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let mutualName">
-            <app-unfollow-button [screenName]="mutualName"></app-unfollow-button>
-        </td>
-    </ng-container>
+    <!--Unfollow Button Column--> 
+        <ng-container matColumnDef="unfollow">
+            <th mat-header-cell *matHeaderCellDef>Unfollow</th>
+            <td mat-cell *matCellDef="let element">
+                <app-unfollow-button [screenName]="element.mutualName"></app-unfollow-button>
+            </td>
+        </ng-container>
 
-    <mat-paginator [pageSizeOptions]= "[10, 20, 50]" 
+        <tr mat-header-row *matHeaderRowDef="this.columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: this.columnsToDisplay;"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10, 20, 50]" [length]="this.dataSource.length" [pageSize]="10"
     showFirstLastButtons></mat-paginator>
-</table>
+</div>

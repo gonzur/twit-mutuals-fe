@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserData } from '../models/user-data';
 import { ApiService } from '../services/api.service';
 import { LoginDataService } from '../services/login-data.service';
 
@@ -10,15 +11,26 @@ import { LoginDataService } from '../services/login-data.service';
 export class TableComponent implements OnInit {
 
   mutuals: string[] = [];
+  screenName: string = "";
+  columnsToDisplay: string[] = ['mutualName', 'unfollow'];
+  dataSource = [{mutualName: 'test'}];
 
   constructor(private apiService: ApiService, private loginData: LoginDataService) {
-    this.apiService = apiService;
+    this.loginData.subscribeUserData((userData: UserData) => {
+      if (this.screenName != userData.screenName) {
+
+        this.apiService.getMutuals(userData.screenName)
+        .subscribe((mutualList: string[]) => {
+          this.mutuals = mutualList;
+        });
+
+        this.screenName = userData.screenName;
+      }
+
+    });
   }
 
   ngOnInit(): void {
-    this.apiService.getMutuals(this.loginData.getUserData().screenName)
-      .subscribe((mutualList: string[]) => {
-        this.mutuals = mutualList;
-      })
+    
   }
 }

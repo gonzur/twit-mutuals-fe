@@ -19,6 +19,11 @@ export class ExMutualsPageComponent implements OnInit {
       this.loginData.commitUser(params["screenName"]);
       this.api.setAuthHeaders(params["oauth"], params["oauthSecret"]);
     })
+    
+  }
+
+  ngAfterContentInit() {
+    
   }
 
 }

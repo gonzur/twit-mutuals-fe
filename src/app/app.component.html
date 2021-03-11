@@ -1,5 +1,6 @@
-<p> hello </p>
+<div>
+  <input #a>
+  <button mat-btn (click)="mutual(a.value)">Gather Mutuals</button>
+</div>
+
 <router-outlet></router-outlet>
-<a [routerLink]="['/mutuals', { screenName: 'example'}]" routerLinkActive="router-link-active" ]>
-  gather mutuals
-</a>

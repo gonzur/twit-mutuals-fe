@@ -1,8 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UserData } from '../models/user-data';
 
-@Injectable()
+@Injectable({
+  providedIn: 'any'
+})
 export class ApiService {
   private readonly apiSubroute: string = "/api";
   private readonly unfollowRoute: string = this.apiSubroute + "/unfollow";

@@ -1,4 +1,4 @@
-class UserData {
+export class UserData {
   readonly profileImage: string;
   readonly link: string;
   readonly profileName: string ;

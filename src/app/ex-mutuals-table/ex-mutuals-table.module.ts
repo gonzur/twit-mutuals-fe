@@ -26,8 +26,8 @@ import { LoginDataService } from './services/login-data.service';
     ExMutualsPageComponent
   ],
   providers: [
-    ApiService,
-    LoginDataService,
+    { provide: ApiService, useClass: ApiService},
+    { provide: LoginDataService, useClass: LoginDataService}
   ]
 })
 export class ExMutualsTableModule { }

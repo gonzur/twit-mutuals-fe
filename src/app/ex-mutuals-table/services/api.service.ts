@@ -9,8 +9,8 @@ import { UserData } from '../models/user-data';
 export class ApiService {
   private readonly apiSubroute: string = "/api";
   private readonly unfollowRoute: string = this.apiSubroute + "/unfollow";
-  private readonly exMutualsRoute: string = this.apiSubroute + "/ex-mutuals";
-  private readonly userDataRoute: string = this.apiSubroute + "/user"
+  private readonly exMutualsRoute: string = this.apiSubroute + "/exMutuals";
+  private readonly userDataRoute: string = this.apiSubroute + "/profileData"
 
   private headers: HttpHeaders = new HttpHeaders();
 
@@ -23,8 +23,8 @@ export class ApiService {
 
   getUserData(screenName: string): Observable<UserData> {
     return this.http.get<UserData>(
-      this.userDataRoute + "?screenName=" + screenName,
-      { headers: this.headers } );
+      this.userDataRoute,
+      { headers: this.headers, params:{screenName: screenName} } );
   }
 
   unfollow(screenName: string): void {

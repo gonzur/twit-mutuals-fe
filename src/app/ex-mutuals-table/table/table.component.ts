@@ -17,14 +17,14 @@ export class TableComponent implements OnInit {
 
   constructor(private apiService: ApiService, private loginData: LoginDataService) {
     this.loginData.subscribeUserData((userData: UserData) => {
-      if (this.screenName != userData.screenName) {
+      if (this.screenName != userData.screen_name) {
 
-        this.apiService.getMutuals(userData.screenName)
-        .subscribe((mutualList: string[]) => {
-          this.mutuals = mutualList;
-        });
+        // this.apiService.getMutuals(userData.screenName)
+        // .subscribe((mutualList: string[]) => {
+        //   this.mutuals = mutualList;
+        // });
 
-        this.screenName = userData.screenName;
+        this.screenName = userData.screen_name;
       }
 
     });

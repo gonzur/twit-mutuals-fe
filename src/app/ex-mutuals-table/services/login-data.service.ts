@@ -32,7 +32,6 @@ export class LoginDataService {
   }
 
   transmitUserData() {
-    console.log("transmitted")
     this.userDataSubject.next(this.userData);
   }
 }

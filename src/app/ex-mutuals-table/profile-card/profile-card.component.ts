@@ -16,8 +16,6 @@ export class ProfileCardComponent implements OnInit {
     this.loginData.subscribeUserData((data: UserData)=>{
       this.userData = data;
     });
-
-    console.log("registered");      
   }
 
   ngOnInit(): void {

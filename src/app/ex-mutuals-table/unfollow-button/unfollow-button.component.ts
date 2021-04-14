@@ -16,7 +16,8 @@ export class UnfollowButtonComponent implements OnInit {
   }
 
   unfollow() {
-    this.apiService.unfollow(this.screenName);
+    alert("unimplemented");
+    // this.apiService.unfollow(this.screenName);
   }
 
   ngOnInit(): void {

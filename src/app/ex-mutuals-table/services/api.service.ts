@@ -10,6 +10,7 @@ export class ApiService {
   private readonly apiSubroute: string = "/api";
   private readonly unfollowRoute: string = this.apiSubroute + "/unfollow";
   private readonly exMutualsRoute: string = this.apiSubroute + "/exMutuals";
+  private readonly mutualsRoute: string = this.apiSubroute + "/mutuals";
   private readonly userDataRoute: string = this.apiSubroute + "/profileData"
 
   private headers: HttpHeaders = new HttpHeaders();
@@ -29,13 +30,28 @@ export class ApiService {
 
   unfollow(screenName: string): void {
     this.http.get<string>(
-      this.unfollowRoute + "?screenName=" + screenName,
-      { headers: this.headers } );
+      this.unfollowRoute,
+      { headers: this.headers, params:{screenName: screenName} }
+    );
+  }
+
+  postProfileData(IDs: string[]) {
+    console.log("postProfileData ran");
+    return this.http.post<UserData[]>(
+      this.userDataRoute,
+      IDs
+    );
   }
 
   getMutuals(screenName: string): Observable<string[]> {
     return this.http.get<string[]>(
-      this.exMutualsRoute + "?screenName=" + screenName,
-      { headers: this.headers } );
+      this.mutualsRoute,
+      { headers: this.headers, params:{screenName: screenName} } );
+  }
+
+  getExMutuals(screenName: string): Observable<string[]> {
+    return this.http.get<string[]>(
+      this.exMutualsRoute,
+      { headers: this.headers, params:{screenName: screenName} } );
   }
 }

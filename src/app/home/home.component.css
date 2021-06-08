@@ -1,0 +1,13 @@
+.center-body {
+  display: grid;
+
+  grid-template-columns: 10% 15% auto 10% 10%;
+  grid-template-rows: 10% 15% auto 10% 10%;
+  height: 100%;
+  width: 100%;
+}
+
+.title-text {
+  grid-column: 3;
+  grid-row: 3;
+}

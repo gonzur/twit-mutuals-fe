@@ -9,12 +9,8 @@ import { Router } from "@angular/router";
 export class AppComponent {
   title = 'mutuals-front';
 
-  constructor(private router: Router){
+  constructor(){
 
   }
 
-  mutual(a: string) {
-    this.router.navigate(['mutuals'], {queryParams: {screenName: a}})
-  }
 }
-

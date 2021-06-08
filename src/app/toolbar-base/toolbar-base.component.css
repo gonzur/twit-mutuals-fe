@@ -1,0 +1,10 @@
+.column {
+  flex-direction: column;
+}
+.toolbar-spacer {
+  justify-content: space-between;
+}
+.search {
+  flex-wrap: nowrap;
+  flex-basis: content;
+}
